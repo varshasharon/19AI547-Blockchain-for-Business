@@ -68,6 +68,9 @@ If the goal is met, the creator can withdraw funds.
 
 
 If the goal is not met, contributors can claim a refund.
+![exp2 2](https://github.com/user-attachments/assets/d138541a-f603-42b1-9c92-869d0c9fe589)
+![exp2 1](https://github.com/user-attachments/assets/2c9df504-a9c1-42c6-aaec-39cd5a1a239b)
+![exp2 3](https://github.com/user-attachments/assets/d1f96b5e-8af8-485a-8b6d-e222df92feba)
 
 
 # High-Level Overview:
