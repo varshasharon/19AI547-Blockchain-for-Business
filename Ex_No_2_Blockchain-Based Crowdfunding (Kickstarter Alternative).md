@@ -80,3 +80,4 @@ Teaches decentralized fundraising.
 Avoids fraud by ensuring funds are only transferred if the goal is met.
 
 # RESULT: 
+ Thus, a decentralized crowdfunding platform has been created and successfully executed.
