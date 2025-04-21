@@ -1,32 +1,29 @@
 # Experiment 4: DeFi Lending and Borrowing Protocol
+
+## Date: 21.04.2025
+
 # Aim:
 To build a decentralized lending protocol where users can deposit assets to earn interest and borrow assets by providing collateral. This experiment introduces concepts like overcollateralization, liquidity pools, and interest accrual in DeFi.
 
 # Algorithm:
-Step 1: Setup Lending and Borrowing Mechanism
+
+### Step 1: Setup Lending and Borrowing Mechanism
 Users deposit ETH into the contract as liquidity.
-
-
 Depositors receive interest based on their deposits.
-
-
 Borrowers can borrow ETH but must provide collateral (e.g., 150% of the borrowed amount).
 
-
-Interest on borrowed funds is calculated dynamically based on utilization rate.
-
-
-Step 2: Implement Overcollateralization
+### Step 2: Implement Overcollateralization
 If a borrower’s collateral value drops below a certain liquidation threshold, their collateral is liquidated to repay the debt.
 
-
-Step 3: Allow Liquidation
+### Step 3: Allow Liquidation
 If collateral < liquidation threshold, liquidators can repay the borrower's debt and claim their collateral at a discount.
 
 
 
 Program:
 ```
+Register number: 212222100058
+
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
@@ -74,14 +71,10 @@ contract DeFiLending {
 
 ```
 # Expected Output:
-Users can deposit ETH and earn interest.
 
-
-Users can borrow ETH by providing collateral.
-
-
-If collateral < 150% of borrowed amount, liquidators can seize the collateral.
-
+![exp 4 2](https://github.com/user-attachments/assets/8c7a19af-3eac-40f1-9be2-fbd939f1f5f3)
+![exp 4 1](https://github.com/user-attachments/assets/6222a583-448d-4e5d-b566-2da7e6d047b2)
+![exp 4 3](https://github.com/user-attachments/assets/d97e2a89-a2d2-4c1f-a30c-6cdc9f7353ec)
 
 
 # High-Level Overview:
@@ -94,4 +87,5 @@ Introduces risk management: overcollateralization and liquidation.
 Directly related to DeFi protocols like Aave and Compound.
 
 # RESULT : 
+Thus, a DeFi Lending and Borrowing Protocol has been successfully built and implenmented on Remix - Ethereum IDE
 
