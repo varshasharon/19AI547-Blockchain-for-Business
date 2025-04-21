@@ -7,16 +7,29 @@ To build a decentralized lending protocol where users can deposit assets to earn
 
 # Algorithm:
 
-### Step 1: Setup Lending and Borrowing Mechanism
-Users deposit ETH into the contract as liquidity.
-Depositors receive interest based on their deposits.
-Borrowers can borrow ETH but must provide collateral (e.g., 150% of the borrowed amount).
+### Step 1: 
+Deploy contract and set the owner, interest rate, and liquidation threshold.
 
-### Step 2: Implement Overcollateralization
-If a borrower’s collateral value drops below a certain liquidation threshold, their collateral is liquidated to repay the debt.
+### Step 2: 
+User deposits funds by calling deposit() and sending Ether to the contract.
 
-### Step 3: Allow Liquidation
-If collateral < liquidation threshold, liquidators can repay the borrower's debt and claim their collateral at a discount.
+### Step 3: 
+Check collateral and ensure it meets the required threshold for borrowing.
+
+### Step 4: 
+User borrows funds by calling borrow(amount), transferring borrowed funds to the user.
+
+### Step 5: 
+Record deposits in the deposits mapping and borrowed amounts in the borrowed mapping.
+
+### Step 6: 
+Accumulate interest (future step, not implemented in current contract).
+
+### Step 7: 
+Check liquidation if the user’s collateral is below 150% of the borrowed amount.
+
+### Step 8: 
+Liquidate borrower by calling liquidate() and transferring seized collateral to the caller.
 
 
 
