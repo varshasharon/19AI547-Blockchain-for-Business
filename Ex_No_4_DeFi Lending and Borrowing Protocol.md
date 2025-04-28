@@ -37,7 +37,7 @@ Program:
 ```
 Register number: 212222100058
 
-// SPDX-License-Identifier: MIT
+//SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
 contract DeFiLending {
@@ -63,11 +63,16 @@ contract DeFiLending {
     }
 
     function borrow(uint256 amount) public payable {
-        require(msg.value >= (amount * liquidationThreshold) / 100, "Not enough collateral");
+        require(msg.value >= (amount * liquidationThreshold) / 100, "Nota enough collateral");
         borrowed[msg.sender] += amount;
         collateral[msg.sender] += msg.value;
         payable(msg.sender).transfer(amount);
         emit Borrowed(msg.sender, amount, msg.value);
+    }
+    function reduceCollateral(address user, uint256 amount) public {
+    require(msg.sender == owner, "Only owner can reduce");
+    require(collateral[user] >= amount, "Not enough collateral to reduce");
+    collateral[user] -= amount;
     }
 
     function liquidate(address borrower) public {
@@ -82,12 +87,15 @@ contract DeFiLending {
     }
 }
 
+
 ```
 # Expected Output:
 
-![exp 4 2](https://github.com/user-attachments/assets/8c7a19af-3eac-40f1-9be2-fbd939f1f5f3)
-![exp 4 1](https://github.com/user-attachments/assets/6222a583-448d-4e5d-b566-2da7e6d047b2)
-![exp 4 3](https://github.com/user-attachments/assets/d97e2a89-a2d2-4c1f-a30c-6cdc9f7353ec)
+![image](https://github.com/user-attachments/assets/af2be60f-07e9-4cfd-b421-b245626fbd02)
+![image](https://github.com/user-attachments/assets/086ed55e-301b-4d94-8a51-6dbdbef1fffc)
+![image](https://github.com/user-attachments/assets/e5d04fc8-b7b9-40a0-b2aa-afc5e296cc9d)
+![image](https://github.com/user-attachments/assets/bd6b8089-2d5d-4735-b109-f222a93398e4)
+
 
 
 # High-Level Overview:
