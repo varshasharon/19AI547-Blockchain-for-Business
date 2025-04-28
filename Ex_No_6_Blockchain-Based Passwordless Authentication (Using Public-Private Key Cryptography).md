@@ -4,15 +4,35 @@
 To implement a secure passwordless authentication system using public-private key cryptography on Ethereum. This prevents phishing and password leaks.
 
 # Algorithm:
-Step 1: User Registration
-A user registers with their Ethereum public key (instead of a password).
+## Step 1:
+Start the Ethereum environment (such as Ganache, or a Testnet) and deploy the smart contract that manages user registration and authentication.
 
+## Step 2:
+User initiates registration by submitting their Ethereum public key to the smart contract.
 
-Step 2: Login Process
-When logging in, the user signs a random challenge message using their private key.
+## Step 3:
+The smart contract securely stores the public key associated with the user's account address.
 
+## Step 4:
+During login, the server (or smart contract) generates a random challenge message (e.g., a random string or nonce).
 
-The smart contract verifies the signature using the user’s public key.
+## Step 5:
+The server sends the challenge to the user’s client-side application.
+
+## Step 6:
+The user’s client-side application signs the challenge using their private key via cryptographic functions (e.g., web3.eth.personal.sign).
+
+## Step 7:
+The signed challenge (digital signature) is sent back to the server (or smart contract) for verification.
+
+## Step 8:
+The server (or smart contract) verifies the signature using the stored public key and checks whether the signature matches the original challenge.
+
+## Step 9:
+If the verification is successful, the user is authenticated successfully; otherwise, access is denied.
+
+## Step 10:
+End the process by granting access to authenticated users or sending an error message for failed authentication.
 
 
 
