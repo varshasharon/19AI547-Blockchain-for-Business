@@ -112,4 +112,4 @@ Inspired by AI-enhanced commerce and eBay-like decentralized auctions.
 
 # RESULT:
 
-
+Thus, a smart contract that integrates AI logic for automated negotiation in decentralized commerce is executed successfully.
