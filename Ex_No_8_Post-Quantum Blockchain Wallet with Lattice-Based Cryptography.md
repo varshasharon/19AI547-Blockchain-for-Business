@@ -3,26 +3,30 @@
 To create a quantum-resistant wallet using lattice-based cryptography instead of traditional ECDSA, ensuring that future quantum computers cannot break private keys.
 
 # Algorithm:
-## Step 1: Understanding Quantum Threat to Blockchain
-ECDSA-based wallets are vulnerable to quantum computers.
 
+### Step 1: 
+ECDSA-based blockchain wallets are vulnerable to attacks from future quantum computers.
 
-Lattice-based cryptography (e.g., NTRU, CRYSTALS-Kyber) provides quantum resistance.
+### Step 2: 
+Lattice-based cryptographic algorithms like NTRU and CRYSTALS-Kyber offer quantum resistance.
 
+### Step 3: 
+Precomputed lattice-based public-private key pairs are used to simulate quantum-safe authentication.
 
-## Step 2: Implement Lattice-Based Signature Scheme
-Use precomputed NTRU-based public-private keys for authentication.
+### Step 4: 
+Users register by submitting a hash of their lattice-based public key to the smart contract.
 
+#### Step 5: 
+Transactions are signed off-chain using lattice-based cryptographic techniques.
 
-Store hashed lattice-based signatures instead of traditional Ethereum signatures.
+### Step 6: 
+The smart contract receives the transaction and the corresponding hash signature for verification.
 
+###  Step 7: 
+It verifies the authenticity of the transaction by comparing the hashed input with the registered key hash.
 
-## Step 3: Secure Transactions
-Users sign transactions using lattice cryptographic proofs.
-
-
-The smart contract verifies the proof before allowing transactions.
-
+### Step 8: 
+If valid, the transaction is processed on-chain, simulating a quantum-resistant wallet interaction.
 
 
 # Program:
@@ -65,14 +69,19 @@ contract PostQuantumWallet {
 }
 ```
 
-# Expected Output:
-Users register using a post-quantum secure public key.
+# Output:
 
+Deployment: 
 
-Transactions require a quantum-resistant signature for authentication.
+![image](https://github.com/user-attachments/assets/7410d3b9-809a-40aa-802e-6a877897aeb2)
 
+Register  User:
 
-If a traditional quantum-vulnerable hash is used, the transaction fails.
+![image](https://github.com/user-attachments/assets/640d1892-be9f-4a80-8301-2e5f11f47eb7)
+
+Check Balance:
+
+![image](https://github.com/user-attachments/assets/eeb744e6-0162-4004-88bc-9a1f30fc0779)
 
 
 # RESULT : 
