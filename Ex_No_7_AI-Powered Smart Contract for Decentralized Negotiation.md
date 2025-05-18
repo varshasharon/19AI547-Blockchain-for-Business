@@ -97,12 +97,9 @@ contract PostQuantumWallet {
 # High-Level Overview:
 First-of-its-kind AI-powered pricing contract.
 
-
 Mimics real-world price negotiations using dynamic on-chain pricing.
 
-
 Can be extended to AI oracles for real-time market data.
-
 
 Inspired by AI-enhanced commerce and eBay-like decentralized auctions.
 
