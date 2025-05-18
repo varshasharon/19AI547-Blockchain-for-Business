@@ -85,15 +85,6 @@ Check Balance:
 
 
 # RESULT : 
-High-Level Overview:
-First quantum-safe Ethereum-compatible wallet prototype.
 
-
-Uses lattice-based key hashes instead of ECDSA.
-
-
-Demonstrates how Ethereum will transition to post-quantum security.
-
-
-Inspired by NIST’s post-quantum cryptography competition.
+Thus, a quantum-resistant wallet using lattice-based cryptography has been implemented successfully using Remix.
 
