@@ -28,9 +28,6 @@ If accepted, the smart contract executes the transaction and transfers ownership
 The transaction data is fed into the price learning algorithm for refinement.
 
 ### Step 9: 
-The system continues to monitor on-chain market trends and buyer behavior.
-
-### Step 10: 
 Future pricing decisions are dynamically optimized based on learned data.
 
 # Program:
