@@ -37,55 +37,55 @@ Future pricing decisions are dynamically optimized based on learned data.
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
-contract PostQuantumWallet {
-    struct User {
-        bytes32 publicKeyHash;
-        bool registered;
+contract AIPoweredNegotiation {
+    struct Item {
+        address seller;
+        uint256 minPrice;
+        uint256 maxPrice;
+        uint256 basePrice;
+        bool sold;
     }
 
-    mapping(address => User) private users; // Made private to hide from Remix UI
-    mapping(address => uint256) public balances;
+    mapping(uint256 => Item) public items;
+    uint256 public itemCount;
 
-    event UserRegistered(address user, bytes32 publicKeyHash);
-    event TransactionVerified(address from, address to, uint256 amount);
+    event ItemListed(uint256 itemId, uint256 basePrice);
+    event OfferMade(uint256 itemId, address buyer, uint256 offer);
+    event CounterOffer(uint256 itemId, uint256 counterOffer);
+    event Sold(uint256 itemId, address buyer, uint256 finalPrice);
 
-    // Constructor
-    constructor() {}
-
-    // Generate a quantum-safe signature (simulated using keccak256)
-    function generateSignature(address _sender, address _recipient, uint256 _amount) public pure returns (bytes32) {
-        return keccak256(abi.encodePacked(_sender, _recipient, _amount));
+    function listItem(uint256 _basePrice, uint256 _minPrice, uint256 _maxPrice) public {
+        require(_minPrice <= _basePrice && _basePrice <= _maxPrice, "Invalid price range");
+        
+        items[itemCount] = Item(msg.sender, _minPrice, _maxPrice, _basePrice, false);
+        emit ItemListed(itemCount, _basePrice);
+        itemCount++;
     }
 
-    // Generate a simulated lattice-based public key hash
-    function generatePublicKeyHash(string memory _publicKey) public pure returns (bytes32) {
-        return keccak256(abi.encodePacked(_publicKey));
+    function makeOffer(uint256 _itemId, uint256 _offerPrice) public payable {
+        Item storage item = items[_itemId];
+        require(!item.sold, "Item already sold");
+        require(msg.value == _offerPrice, "Incorrect offer amount");
+
+        emit OfferMade(_itemId, msg.sender, _offerPrice);
+
+        uint256 aiCounterOffer = dynamicPricing(item.basePrice, item.minPrice, item.maxPrice, _offerPrice);
+
+        if (_offerPrice >= aiCounterOffer) {
+            item.sold = true;
+            payable(item.seller).transfer(_offerPrice);
+            emit Sold(_itemId, msg.sender, _offerPrice);
+        } else {
+            payable(msg.sender).transfer(_offerPrice); // Refund buyer
+            emit CounterOffer(_itemId, aiCounterOffer);
+        }
     }
 
-    // Register a user with a public key hash
-    function registerUser(bytes32 _publicKeyHash) public {
-        require(!users[msg.sender].registered, "User already registered");
-        users[msg.sender] = User(_publicKeyHash, true);
-        emit UserRegistered(msg.sender, _publicKeyHash);
+    function dynamicPricing(uint256 base, uint256 min, uint256 max, uint256 offer) private pure returns (uint256) {
+        if (offer >= max) return max;
+        if (offer >= base) return base;
+        return (base + offer) / 2; // Simple AI-based counteroffer logic
     }
-
-    // Send funds using quantum-safe simulated signature
-    function sendFunds(address _to, uint256 _amount, bytes32 _signature) public {
-        require(users[msg.sender].registered, "Sender not registered");
-        require(users[_to].registered, "Recipient not registered");
-        require(balances[msg.sender] >= _amount, "Insufficient funds");
-
-        bytes32 calculatedSignature = generateSignature(msg.sender, _to, _amount);
-        require(calculatedSignature == _signature, "Invalid quantum-safe signature");
-
-        balances[msg.sender] -= _amount;
-        balances[_to] += _amount;
-        emit TransactionVerified(msg.sender, _to, _amount);
-    }
-
-    // Deposit funds to the wallet
-    function depositFunds() public payable {
-        balances[msg.sender] += msg.value;}
 }
 ```
 
